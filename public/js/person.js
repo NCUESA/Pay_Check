@@ -14,6 +14,7 @@ $(document).ready(function () {
             data: {
                 name: $('#add_person').val(),
                 inner_code: $('#inner_code').val(),
+                stu_id: $('#stu_id').val(),
                 status: $('input[name="status"]:checked').val(),
                 _token: $('meta[name="csrf-token"]').attr('content')  // CSRF Token
             },

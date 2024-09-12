@@ -20,6 +20,7 @@ class PersonController extends Controller
     {
         $name = $request->input('name');
         $inner_code = $request->input('inner_code');
+        $stu_id = $request->input('stu_id');
         $status = $request->input('status');
 
         if ($status == 'd') {
@@ -35,6 +36,7 @@ class PersonController extends Controller
             Person::insert([
                 'name' => $name,
                 'inner_code' => $inner_code,
+                'stu_id' => $stu_id,
                 'status' => $status
             ]);
             return response()->json(['success' => true, 'message' => '資料已新增'], 200);
