@@ -12,12 +12,14 @@ class JobController extends Controller
     //
     public function checkInOrOut(Request $request)
     {
+
         $request->validate([
             'inner_code' => 'required|string|max:10|min:10',
             'check_time' => 'required|date_format:Y-m-d\TH:i'
         ]);
         $inner_code = $request->input('inner_code');
         $check_time = Carbon::parse($request->input('check_time'))->format('Y-m-d H:i');
+        $clientIp = $request->ip();
 
         $check_person = Person::select('name')
             ->where('inner_code', $inner_code)
@@ -41,7 +43,8 @@ class JobController extends Controller
             CheckList::create([
                 'inner_code' => $inner_code,
                 'checkin_time' => $check_time,
-                'checkin_operation' => 1
+                'checkin_operation' => 1,
+                'checkin_ip' => $clientIp
             ]);
             return response()->json(['success' => true, 'name' => $check_person->name, 'message' => '簽到成功'], 200);
         } else {
