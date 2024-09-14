@@ -23,6 +23,11 @@ $(document).ready(function () {
                         $('#check_time').val('錯誤');
                         $('#check_status').val(response.message);
                     }
+                    else if(response.name == '打卡間隔時間過快'){
+                        $('#person').val(response.name);
+                        $('#check_time').val('狀態異常');
+                        $('#check_status').val(response.message);
+                    }
                     else {
                         $('#person').val(response.name);
                         $('#check_time').val(now_time[0]);
