@@ -11,7 +11,8 @@ class PersonController extends Controller
 
     public function showUserFull(Request $request)
     {
-        $user_info = Person::all();
+        $user_info = Person::orderBy('stu_id')
+            ->get();
 
         return response()->json(['success' => true, 'data' => $user_info], 200);
     }
@@ -29,7 +30,7 @@ class PersonController extends Controller
             $status = 1;
         }
 
-        $user_exist = Person::where('name', $name)->first();
+        $user_exist = Person::where('inner_code', $inner_code)->first();
 
         if (is_null($user_exist)) {
             // 當沒有資料時的處理
@@ -42,7 +43,13 @@ class PersonController extends Controller
             return response()->json(['success' => true, 'message' => '資料已新增'], 200);
         } else {
             // 當有資料時的處理
-            Person::where('name', $name)->update(['status' => $status]);
+            Person::where('inner_code', $inner_code)->update(
+                [
+                    'status' => $status,
+                    'name' => $name,
+                    'stu_id' => $stu_id
+                ]
+            );
             return response()->json(['success' => true, 'message' => '資料已更新'], 200);
         }
     }

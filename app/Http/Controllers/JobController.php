@@ -18,7 +18,7 @@ class JobController extends Controller
             'check_time' => 'required|date_format:Y-m-d\TH:i'
         ]);
         $inner_code = $request->input('inner_code');
-        $check_time = Carbon::parse($request->input('check_time'))->format('Y-m-d H:i');
+        $check_time = Carbon::parse($request->input('check_time'));
         $clientIp = $request->ip();
 
         $check_person = Person::select('name')
@@ -27,7 +27,7 @@ class JobController extends Controller
             ->first();
 
         if (is_null($check_person)) {
-            return response()->json(['success' => true, 'name' => '查無此人', 'message' => '無此卡號或未啟用'], 200);
+            return response()->json(['success' => true, 'name' => '查無此人', 'message' => '無此卡號或未啟用','checkIP' => $clientIp], 200);
         }
 
 
@@ -42,17 +42,24 @@ class JobController extends Controller
             // 當沒有資料時的處理
             CheckList::create([
                 'inner_code' => $inner_code,
-                'checkin_time' => $check_time,
-                'checkin_operation' => 1,
-                'checkin_ip' => $clientIp
+                'checkin_time' => $check_time->format('Y-m-d H:i'),
+                'checkin_ip' => $clientIp,
+                'checkin_operation' => 1
+                
             ]);
-            return response()->json(['success' => true, 'name' => $check_person->name, 'message' => '簽到成功'], 200);
+            return response()->json(['success' => true, 'name' => $check_person->name, 'message' => '簽到成功','checkIP' => $clientIp], 200);
         } else {
+            $checkin_time = Carbon::parse($user_exist->checkin_time);
+            
+            if ($checkin_time->diffInMinutes($check_time) < 2) {
+                return response()->json(['success'=> true,'name'=> '打卡間隔時間過快', 'message'=> '如有需要請手動簽退'], 200);
+            }
             // 當有資料時的處理
             CheckList::where('id', $user_exist->id)
                 ->update([
                     'checkout_operation' => 1,
-                    'checkout_time' => $check_time
+                    'checkout_time' => $check_time->format('Y-m-d H:i'),
+                    'checkout_ip' => $clientIp
                 ]);
             $check_person = Person::select('name')
                 ->where('inner_code', $inner_code)
@@ -65,6 +72,7 @@ class JobController extends Controller
     public function showList()
     {
         $data = CheckList::leftJoin('person', 'checklist.inner_code', '=', 'person.inner_code')
+            ->orderByDesc('checkin_time')
             ->get();
         return response()->json(['success' => true, 'data' => $data]);
     }
@@ -85,7 +93,9 @@ class JobController extends Controller
         CheckList::where('id', $id)
             ->update([
                 'checkin_time' => $checkin_time,
-                'checkout_time' => $checkout_time
+                'checkout_time' => $checkout_time,
+                'checkin_operation' => 2,
+                'checkout_operation' => 2
             ]);
         return response()->json(['success' => true], 200);
     }

@@ -15,7 +15,9 @@ class CheckList extends Model
         'checkin_time',
         'checkin_operation',
         'checkout_time',
-        'checkout_operation'
+        'checkout_operation',
+        'checkin_ip',
+        'checkout_ip'
     ];
 
 }
