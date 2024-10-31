@@ -89,7 +89,7 @@ $(document).ready(function () {
         // 將第一個 <td> 的內容填入 input #inputA
         $('#add_id').val(id);
         $('#add_ip').val(ip);
-        $('#add_descirption').val(descirption);
+        $('#description').val(descirption);
         //console.log(status);
         // 根據第二個 <td> 的內容選擇對應的 radio 按鈕
         $(`input[name="status"][value="${radio_val}"]`).prop('checked', true);
