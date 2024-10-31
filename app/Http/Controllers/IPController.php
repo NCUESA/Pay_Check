@@ -46,4 +46,24 @@ class IPController extends Controller
         //AuthIp::where('ip_address', $ip)->update(['status' => $status]);
         return response()->json(['success' => true, 'message' => '資料已更新'], 200);
     }
+    public function deleteIP(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'ip' => 'required',
+            'description' => 'max:50'
+        ]);
+        $id = $request->input('id');
+
+        $res = AuthIP::where('id', $id)
+            ->delete();
+
+        if($res){
+            return response()->json(['success' => true, 'message' => '資料已更新'], 200);
+        }
+        else{
+            return response()->json(['success' => true, 'message' => '無資料'], 500);
+        }
+       
+    }
 }

@@ -33,13 +33,16 @@ Route::group([],function () {
 Route::group([],function(){
     Route::post('/check', [JobController::class, 'checkInOrOut']);
     Route::post('/show-list', [JobController::class, 'showList']);
+    Route::post('/show-list-condition', [JobController::class, 'showListCondition']);
     Route::post('/update-list', [JobController::class, 'manualUpdateList']);
+    Route::post('/gen-month-table',[JobController::class,'genMonthTable']);
 });
 
 // IP
 Route::group([],function(){
     Route::post('/show-ip', [IPController::class, 'showIP']);
     Route::post('/add-ip', [IPController::class, 'addIP']);
+    Route::post('/delete-ip',[IPController::class,'deleteIP']); 
 });
 
 
