@@ -22,10 +22,11 @@ class AuthMiddleware
             ->exists();
 
 
-        //if (!$isAllowed) {
-        //    return redirect()->to('/');
-        //}
-
+        if (!$isAllowed) {
+            return redirect()->to('/');
+        }
+        session(['hasAccess' => true]);
+        
         return $next($request);
     }
 }
