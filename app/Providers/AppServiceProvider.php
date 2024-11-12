@@ -23,8 +23,7 @@ class AppServiceProvider extends ServiceProvider
         //
         View::composer('template', function ($view) {
             $hasAccess = session('hasAccess', false);
-            $hasAdminAccess = session('hasAdminAccess', false);
-            $view->with(compact('hasAccess', 'hasAdminAccess'));
+            $view->with(compact('hasAccess'));
         });
     }
 }
