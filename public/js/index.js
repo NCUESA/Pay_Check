@@ -28,17 +28,28 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 if (response.success) {
+                    $('#check_status').removeClass('btn-danger');
+                    $('#check_status').removeClass('btn-primary');
+                    $('#check_status').removeClass('btn-success');
                     if (response.name == '查無此人') {
                         $('#person').val(response.name);
                         $('#check_time').val('錯誤');
                         $('#check_status').val(response.message);
+                        $('#check_status').addClass('btn-danger');
                     }
                     else if(response.name == '打卡間隔時間過快'){
                         $('#person').val(response.name);
-                        $('#check_time').val('狀態異常');
-                        $('#check_status').val(response.message);
+                        $('#check_time').val(response.message);
+                        $('#check_status').val('狀態異常');
+                        $('#check_status').addClass('btn-danger');
                     }
                     else {
+                        if(response.message == '簽到成功'){
+                            $('#check_status').addClass('btn-success');
+                        }
+                        else{
+                            $('#check_status').addClass('btn-primary');
+                        }
                         $('#person').val(response.name);
                         $('#check_time').val(now_time[0]);
                         $('#check_status').val(response.message);

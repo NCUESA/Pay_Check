@@ -9,6 +9,8 @@
         <input type="text" class="form-control" placeholder="請嗶卡" aria-label="" aria-describedby="basic-addon1"
             id="check_input" inputmode="numeric">
     </div>
+
+
     <hr>
     <div class="row">
         <div class="input-group input-group-lg">
@@ -22,5 +24,16 @@
             <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
                 disabled id="check_status">
         </div>
+    </div>
+    <hr>
+    <div class="alert alert-secondary" role="alert">
+        <h3>注意事項</h3>
+        <ul>
+            <li><h4>簽"到"成功-><span class="text-success">綠色</span></h4></li>
+            <li><h4>簽"退"成功-><span class="text-primary">藍色</span></h4></li>
+            <li><h4>有其他問題-><span class="text-danger">紅色</span></h4></li>
+            <li>簽到簽退中間有兩分鐘的緩衝，但簽退後再簽到則沒有</li>
+            <li>如果卡不能刷請通知人文部做處理</li>
+        </ul>
     </div>
 @endsection
