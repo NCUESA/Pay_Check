@@ -45,6 +45,11 @@ Route::group([],function(){
     Route::post('/delete-ip',[IPController::class,'deleteIP']); 
 });
 
+Route::get('/refresh-csrf-token', function () {
+    return response()->json(['token' => csrf_token()]);
+});
+
+
 
 
 

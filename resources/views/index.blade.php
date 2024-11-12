@@ -7,7 +7,7 @@
     <div class="input-group input-group-lg">
         <span class="input-group-text" id="">打卡欄位</span>
         <input type="text" class="form-control" placeholder="請嗶卡" aria-label="" aria-describedby="basic-addon1"
-            id="check_input">
+            id="check_input" inputmode="numeric">
     </div>
     <hr>
     <div class="row">

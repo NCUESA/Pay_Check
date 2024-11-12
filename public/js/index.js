@@ -3,7 +3,17 @@ $(document).ready(function () {
         let getTimeArr = getCurrentTime();
         $('#now_time').text(getTimeArr[0]);
     }, 1000);
-
+    setInterval(() => {
+        fetch('/refresh-csrf-token')
+            .then(response => response.json())
+            .then(data => {
+                $('meta[name="csrf-token"]').attr('content', data.token); // 更新 CSRF Token
+            });
+    }, 5 * 60 * 1000); // 每 5 分鐘更新一次
+    $('#specificInput').on('focus', function () {
+        $(this).attr('inputmode', 'text'); // 例如切換到英文輸入法
+    });
+    
     $('#check_input').on('change', function (e) {
         e.preventDefault();
         let now_time = getCurrentTime();
