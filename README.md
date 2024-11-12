@@ -2,7 +2,7 @@
 
 ## 學生會人員簽到系統
 
-### Last Upate
+### Last Update
 - Commit Name:     Expired Update
 - Update Date:     2024/11/12
 - Builder:        安得
