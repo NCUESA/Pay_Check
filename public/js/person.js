@@ -55,8 +55,8 @@ $(document).ready(function () {
         const currentRow = $(this).closest('tr');
     
         // 提取每個 td 的內容
-        const name = currentRow.find('td').eq(0).text();  // 第一個 <td> 的內容
-        const stu_id = currentRow.find('td').eq(1).text();  // 第一個 <td> 的內容
+        const name = currentRow.find('td').eq(1).text();  // 第一個 <td> 的內容
+        const stu_id = currentRow.find('td').eq(0).text();  // 第一個 <td> 的內容
         const inner_code = currentRow.find('td').eq(2).text();  // 第一個 <td> 的內容
         const status = currentRow.find('td').eq(3).text(); // 第二個 <td> 的內容
         const radio_val = status == 'DOWN'? 'd': status == 'UP'? 'u': 'N/A';
