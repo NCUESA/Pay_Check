@@ -4,9 +4,9 @@
 取代用手輸入，改用逼卡的方式查詢
 
 ### Last Update
-- Commit Name:     
-- Update Date:     
-- Builder:        
-
+- Commit Name:     Initial Commit
+- Update Date:     2024/11/19
+- Builder:        安得
+系統建置
 ### 歷史紀錄
 
