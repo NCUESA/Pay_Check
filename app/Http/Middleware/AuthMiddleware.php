@@ -18,13 +18,13 @@ class AuthMiddleware
     {
         $clientIp = $request->ip();
 
-        $isAllowed = AuthIp::where('ip_address', $clientIp)
-            ->exists();
+        //$isAllowed = AuthIp::where('ip_address', $clientIp)
+        //    ->exists();
 
 
-        if (!$isAllowed) {
-            return redirect()->to('/');
-        }
+        //if (!$isAllowed) {
+        //    return redirect()->to('/');
+        //}
         session(['hasAccess' => true]);
         
         return $next($request);

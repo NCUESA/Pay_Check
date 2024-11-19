@@ -24,9 +24,10 @@ Route::middleware(['ipAuth'])->group(function () {
 
 
 // Person
-Route::group([],function () {
-    Route::post('/add-user', [PersonController::class, 'addUser']);
-    Route::post('/show-user', [PersonController::class, 'showUserFull']);
+Route::prefix('user')->group(function () {
+    Route::post('/add', [PersonController::class, 'addUser']);
+    Route::post('/show', [PersonController::class, 'showUserFull']);
+    Route::post('/check', [PersonController::class, 'checked']);
 });
 
 // CheckList

@@ -10,8 +10,10 @@ class Person extends Model
     use HasFactory;
     protected $table = 'person';
     protected $fillable = [
-        'name',
         'inner_code',
-        'status'
+        'status',
+        'stu_id',
+        'checked',
+        'check_time'
     ];
 }

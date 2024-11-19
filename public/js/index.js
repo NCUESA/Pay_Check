@@ -19,7 +19,7 @@ $(document).ready(function () {
         let now_time = getCurrentTime();
         $.ajax({
             type: 'POST',
-            url: '/check',
+            url: '/user/check',
             data: {
                 inner_code: $('#check_input').val(),
                 check_time: now_time[1],
@@ -29,7 +29,7 @@ $(document).ready(function () {
                 console.log(response);
                 if (response.success) {
                     $('#check_status').removeClass('btn-danger');
-                    $('#check_status').removeClass('btn-primary');
+                    $('#check_status').removeClass('btn-warning');
                     $('#check_status').removeClass('btn-success');
                     if (response.name == '查無此人') {
                         $('#person').val(response.name);
@@ -44,7 +44,7 @@ $(document).ready(function () {
                         $('#check_status').addClass('btn-danger');
                     }
                     else {
-                        if(response.message == '簽到成功'){
+                        if(response.message == '可領取'){
                             $('#check_status').addClass('btn-success');
                         }
                         else{

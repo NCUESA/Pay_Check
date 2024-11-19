@@ -3,7 +3,7 @@
 @section('content')
 <form id='edit_list'>
     <h6><strong>請注意，此輸入並不防呆，送出前請先再三確認!!!</strong></h6>
-    <div class="row g-3 align-items-center">
+    <!--<div class="row g-3 align-items-center">
         <div class="col-1">
             <label for="id" class="col-form-label">ID(系統自帶)</label>
         </div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-1">
-            <label for="checkin_time" class="col-form-label">簽到時間</label>
+            <label for="checkin_time" class="col-form-label">逼取時間</label>
         </div>
         <div class="col-4">
             <input type="datetime-local" id="checkin_time" class="form-control" placeholder="" required step="60">
@@ -43,19 +43,19 @@
         <div class="col-2 d-grid gap-2">
             <button type="reset" class="btn btn-danger btn-block">取消重填</button>
         </div>
-    </div>
+    </div>-->
 </form>
 <hr>
 <form>
     <h6><strong>查詢列表 (留空表示不查詢)</strong></h6>
     <div class="row g-3 align-items-center">
 
-        <div class="col-1">
+        <!--<div class="col-1">
             <label for="search_name" class="col-form-label">人名</label>
         </div>
         <div class="col-2">
             <input type="input" id="search_name" class="form-control" placeholder="">
-        </div>
+        </div>-->
 
         <div class="col-1">
             <label for="search_stuid" class="col-form-label">學號</label>
@@ -63,6 +63,7 @@
         <div class="col-2">
             <input type="input" id="search_stuid" class="form-control" placeholder="">
         </div>
+        <!--
         <div class="col-1">
             <label for="search_year" class="col-form-label">設定年分</label>
         </div>
@@ -129,7 +130,7 @@
 
         <div class="col-3 d-grid gap-2">
             <button type="button" id="gen_month_paper" class="btn btn-warning btn-block">產生月報表</button>
-        </div>
+        </div>-->
         <div class="col-3 d-grid gap-2">
             <button type="button" id="search" class="btn btn-primary btn-block">查詢</button>
         </div>
@@ -142,11 +143,11 @@
     <thead>
         <tr>
             <th scope="col">學號</th>
-            <th scope="col">姓名</th>
-            <th scope="col">簽到時間</th>
-            <th scope="col">簽到地點</th>
+            
+            <th scope="col">逼卡時間</th>
+            <!--<th scope="col">簽到地點</th>
             <th scope="col">簽退時間</th>
-            <th scope="col">簽退地點</th>
+            <th scope="col">簽退地點</th>-->
         </tr>
     </thead>
     <tbody id="all_list">

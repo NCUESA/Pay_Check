@@ -20,7 +20,7 @@
             <span class="input-group-text" id="">打卡時間</span>
             <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
                 disabled id="check_time">
-            <span class="input-group-text" id="">打卡狀態</span>
+            <span class="input-group-text" id="">狀態</span>
             <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"
                 disabled id="check_status">
         </div>
@@ -29,11 +29,9 @@
     <div class="alert alert-secondary" role="alert">
         <h3>注意事項</h3>
         <ul>
-            <li><h4>簽"到"成功-><span class="text-success">綠色</span></h4></li>
-            <li><h4>簽"退"成功-><span class="text-primary">藍色</span></h4></li>
+            <li><h4>有繳會費可領取-><span class="text-success">綠色</span></h4></li>
+            <li><h4>領過了-><span class="text-primary">黃色</span></h4></li>
             <li><h4>有其他問題-><span class="text-danger">紅色</span></h4></li>
-            <li>簽到簽退中間有兩分鐘的緩衝，但簽退後再簽到則沒有</li>
-            <li>如果卡不能刷請通知人文部做處理</li>
         </ul>
     </div>
 @endsection

@@ -33,9 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./person">人員管理</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./ip">IP管理</a>
-                        </li>
+                        </li>-->
                     @endif
                     <!--
                     <li class="nav-item dropdown">
